@@ -1,95 +1,389 @@
 <!DOCTYPE html>
-<!-- Rewritten in-session 2026-11-20 (thinking_reproduces fix). Screenshot review: all 46 headlines complete, map dots 10/11 (London) and 9/13 (New York) match the caption below. -->
-<html><head><meta charset="utf-8"><style>
-@font-face{font-family:'Gloock';src:url('fonts/Gloock-Regular.ttf');font-weight:400}
-@font-face{font-family:'Lora';src:url('fonts/Lora-Regular.ttf');font-weight:400}
-@font-face{font-family:'Lora';src:url('fonts/Lora-Bold.ttf');font-weight:700}
-@font-face{font-family:'Instrument Sans';src:url('fonts/InstrumentSans-Regular.ttf');font-weight:400}
-@font-face{font-family:'Instrument Sans';src:url('fonts/InstrumentSans-Bold.ttf');font-weight:700}
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1024px;height:1024px;overflow:hidden}
-body{background:#f7f3ea;color:#141414;font-family:'Lora',Georgia,serif;-webkit-font-smoothing:antialiased}
-.page{width:1024px;height:1024px;padding:22px 28px 20px;display:flex;flex-direction:column}
-.gap{height:6px;flex:none}
-/* masthead */
-.masthead{text-align:center;border-bottom:4px double #141414;padding-bottom:5px;height:70px;flex:none}
-.masthead h1{font-family:'Gloock','Times New Roman',serif;font-weight:400;font-size:52px;line-height:1;letter-spacing:.5px}
-.dateline{font-family:'Instrument Sans',sans-serif;font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;margin-top:5px}
-/* region bar */
-.regions{display:flex;justify-content:space-between;align-items:center;height:22px;flex:none;border-bottom:1px solid #141414;font-family:'Instrument Sans',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.8px}
-.regions .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px;vertical-align:-1px}
-/* stats strip */
-.stats{display:flex;height:54px;flex:none;border-bottom:1px solid #141414}
-.stat{flex:1;padding:5px 8px 4px;border-left:1px solid #c9c2b2}
-.stat:first-child{border-left:none;padding-left:2px}
-.stat .num{font-weight:700;font-size:20px;line-height:1.05}
-.stat .cap{font-family:'Instrument Sans',sans-serif;font-size:8.5px;line-height:1.25;color:#444;margin-top:2px}
-/* heroes */
-.heroes{display:flex;gap:14px;height:202px;flex:none}
-.hero{flex:1;display:flex;flex-direction:column;min-width:0}
-.kick{display:flex;align-items:center;gap:6px;font-family:'Instrument Sans',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:1.2px;color:#8a1c1c;height:15px}
-.badge{display:inline-flex;align-items:center;justify-content:center;width:15px;height:15px;border-radius:50%;background:#8a1c1c;color:#fff;font-size:9px;font-weight:700;letter-spacing:0;flex:none}
-.hero .art{height:80px;margin:5px 0;flex:none}
-.hero .art svg{width:100%;height:100%;display:block}
-.hero h2{font-size:17px;line-height:1.12;font-weight:700}
-.hero p{font-size:11px;line-height:1.4;margin-top:4px;color:#222}
-/* medium cards */
-.medium{display:grid;grid-template-columns:repeat(5,1fr);gap:6px 10px;height:198px;flex:none}
-.card{border-top:2px solid #141414;padding-top:4px;display:flex;flex-direction:column;min-width:0;overflow:hidden}
-.card .kick{font-size:8.5px;height:13px}
-.card .kick .badge{width:13px;height:13px;font-size:8px}
-.card .motif{height:16px;margin:3px 0;flex:none}
-.card .motif svg{width:100%;height:100%;display:block}
-.card h3{font-size:11px;line-height:1.12;font-weight:700}
-.card p{font-size:9px;line-height:1.28;margin-top:3px;color:#222}
-/* map */
-.map{height:134px;flex:none;border-top:1px solid #141414;border-bottom:1px solid #141414;padding-top:3px}
-.map .mtitle{font-family:'Instrument Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px}
-.map svg{width:100%;height:102px;display:block}
-.map .mcap{font-family:'Instrument Sans',sans-serif;font-size:8.5px;color:#555}
-/* briefs */
-.briefs{height:180px;flex:none}
-.briefs .btitle{font-family:'Instrument Sans',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:2px;border-bottom:2px solid #141414;padding-bottom:3px;margin-bottom:5px}
-.bcols{column-count:3;column-gap:18px}
-.brief{font-size:9px;line-height:1.25;margin-bottom:2px;break-inside:avoid;white-space:nowrap;overflow:hidden}
-.brief .bn{font-family:'Instrument Sans',sans-serif;font-weight:700;color:#8a1c1c;font-size:8.5px}
-.brief b{font-family:'Instrument Sans',sans-serif;font-size:8.5px;letter-spacing:.3px}
-/* date check */
-.datecheck{flex:none;background:#141414;color:#f7f3ea;padding:6px 10px;font-family:'Instrument Sans',sans-serif;font-size:9.5px;line-height:1.35}
-.datecheck b{color:#f5c518;letter-spacing:1px}
-/* footer */
-.footer{flex:none;text-align:center;font-family:'Instrument Sans',sans-serif;font-size:8.5px;line-height:1.3;color:#555;padding-top:2px}
-</style></head><body><div class="page">
-<div class="masthead"><h1>THE WORLD IN ONE DAY</h1><div class="dateline">Friday 20 November 2026 &nbsp;&bull;&nbsp; 46 Stories &nbsp;&bull;&nbsp; Seven Regions</div></div>
-<div class="gap"></div>
-<div class="regions"><span><span class="dot" style="background:#2563eb"></span>EUROPE 20</span><span><span class="dot" style="background:#7c3aed"></span>OCEANIA 9</span><span><span class="dot" style="background:#16a34a"></span>THE AMERICAS 6</span><span><span class="dot" style="background:#6b7280"></span>WORLD 6</span><span><span class="dot" style="background:#dc2626"></span>ASIA-PACIFIC 3</span><span><span class="dot" style="background:#0e7490"></span>CENTRAL ASIA 1</span><span><span class="dot" style="background:#92400e"></span>AFRICA 1</span></div>
-<div class="gap"></div>
-<div class="stats"><div class="stat"><div class="num">298,676</div><div class="cap">evacuated ahead of Cyclone Akvan (PTI)</div></div><div class="stat"><div class="num">317/6</div><div class="cap">NZ at lunch, Day 2; Nicholls 146* (Cricbuzz)</div></div><div class="stat"><div class="num">+2.2%</div><div class="cap">Japan Oct core CPI y/y; Dec hike now 86% likely (Reuters)</div></div><div class="stat"><div class="num">24,000</div><div class="cap">properties lost power in SA storm; 10,000+ still out (ABC)</div></div><div class="stat"><div class="num">&pound;5.1bn/yr</div><div class="cap">SPS deal estimate at the UK&ndash;EU summit (GOV.UK)</div></div><div class="stat"><div class="num">-22</div><div class="cap">UK GfK confidence in Nov, up from -24 (Reuters)</div></div></div>
-<div class="gap"></div>
-<div class="heroes">
-<div class="hero"><div class="kick"><span class="badge">1</span>ODISHA &bull; STORM</div><div class="art"><svg viewBox="0 0 296 80" preserveAspectRatio="none"><rect width="296" height="80" fill="#0c3547"/><path d="M148 40 a26 26 0 1 1 26 -26" stroke="#e0f2fe" stroke-width="5" fill="none"/><path d="M148 40 a16 16 0 1 1 16 -16" stroke="#7dd3fc" stroke-width="4" fill="none"/><path d="M148 40 a7 7 0 1 1 7 -7" stroke="#bae6fd" stroke-width="3" fill="none"/><circle cx="148" cy="40" r="4" fill="#f5c518"/><path d="M20 12 L12 26 M52 8 L44 22 M240 10 L232 24 M272 16 L264 30 M90 4 L82 18 M200 4 L192 18" stroke="#7dd3fc" stroke-width="2"/><rect y="66" width="296" height="14" fill="#134e5e"/><path d="M0 66 Q40 58 80 66 T160 66 T240 66 T296 66" stroke="#e0f2fe" stroke-width="2" fill="none"/></svg></div><h2>Cyclone Akvan bears down on Odisha coast</h2><p>Landfall due by noon near Gopalpur, winds 90&ndash;100 km/h; 298,676 evacuated to 2,523 relief camps. IMD</p></div>
-<div class="hero"><div class="kick"><span class="badge">2</span>WELLINGTON &bull; CRICKET</div><div class="art"><svg viewBox="0 0 296 80" preserveAspectRatio="none"><rect width="296" height="80" fill="#1d5c2e"/><rect x="0" y="34" width="296" height="12" fill="#2f7a3e"/><rect x="118" y="8" width="60" height="64" fill="#d9c9a3"/><line x1="148" y1="8" x2="148" y2="72" stroke="#fff" stroke-width="1"/><rect x="141" y="16" width="13" height="48" fill="#8a5a2b" transform="rotate(18 148 40)"/><rect x="143" y="8" width="9" height="12" fill="#d9c9a3" transform="rotate(18 148 40)"/><circle cx="196" cy="58" r="7" fill="#b91c1c"/><rect x="60" y="18" width="4" height="22" fill="#f8fafc"/><rect x="68" y="18" width="4" height="22" fill="#f8fafc"/><rect x="76" y="18" width="4" height="22" fill="#f8fafc"/><rect x="224" y="18" width="4" height="22" fill="#f8fafc"/><rect x="232" y="18" width="4" height="22" fill="#f8fafc"/><rect x="240" y="18" width="4" height="22" fill="#f8fafc"/></svg></div><h2>Nicholls 146* lifts New Zealand to 317/6</h2><p>At lunch on Day 2, Phillips made 118 in a 216-run stand; India took one wicket all morning. Cricbuzz</p></div>
-<div class="hero"><div class="kick"><span class="badge">3</span>BRUSSELS &bull; SUMMIT</div><div class="art"><svg viewBox="0 0 296 80" preserveAspectRatio="none"><rect width="296" height="80" fill="#1f3a5f"/><g fill="#f5c518"><circle cx="148" cy="10" r="3"/><circle cx="174" cy="17" r="3"/><circle cx="184" cy="40" r="3"/><circle cx="174" cy="63" r="3"/><circle cx="148" cy="70" r="3"/><circle cx="122" cy="63" r="3"/><circle cx="112" cy="40" r="3"/><circle cx="122" cy="17" r="3"/><circle cx="148" cy="40" r="3"/><circle cx="164" cy="27" r="3"/><circle cx="164" cy="53" r="3"/><circle cx="132" cy="53" r="3"/><circle cx="132" cy="27" r="3"/></g><rect x="0" y="62" width="296" height="18" fill="#0f1e33"/><rect x="20" y="52" width="52" height="10" fill="#1d4ed8"/><circle cx="32" cy="57" r="1.5" fill="#f5c518"/><circle cx="46" cy="57" r="1.5" fill="#f5c518"/><circle cx="60" cy="57" r="1.5" fill="#f5c518"/><rect x="224" y="52" width="52" height="10" fill="#f8fafc"/><rect x="247" y="52" width="6" height="10" fill="#b91c1c"/><rect x="224" y="55" width="52" height="4" fill="#b91c1c"/></svg></div><h2>UK and EU meet for first summit in years</h2><p>Burnham meets Costa and von der Leyen; a food deal worth up to &pound;5.1bn a year is on the table. EU Council</p></div>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The World in One Day — Friday 20 November 2026</title>
+<style>
+@font-face{font-family:"Gloock";src:url("fonts/Gloock-Regular.ttf") format("truetype");}
+@font-face{font-family:"Lora";src:url("fonts/Lora-Regular.ttf") format("truetype");}
+@font-face{font-family:"Lora";font-weight:700;src:url("fonts/Lora-Bold.ttf") format("truetype");}
+@font-face{font-family:"Instrument Sans";src:url("fonts/InstrumentSans-Regular.ttf") format("truetype");}
+@font-face{font-family:"Instrument Sans";font-weight:700;src:url("fonts/InstrumentSans-Bold.ttf") format("truetype");}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f7f3ea}
+.sheet{width:1024px;height:1024px;margin:0 auto;padding:10px 18px 6px;background:#f7f3ea;color:#141414;font-family:"Lora",serif;overflow:hidden}
+.kicker{font-family:"Instrument Sans",sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8a1c1c}
+.eyebrow{display:flex;justify-content:space-between;align-items:baseline;border-bottom:3px solid #141414;padding-bottom:4px}
+.eyebrow .kicker{font-size:13px}
+.eyebrow .side{font-family:"Instrument Sans",sans-serif;font-weight:700;font-size:11px;letter-spacing:.12em;color:#141414}
+h1{font-family:"Gloock",serif;font-weight:400;font-size:44px;line-height:1.04;text-align:center;padding:4px 0 1px}
+.dek{font-style:italic;font-size:14px;color:#8a1c1c;text-align:center;border-bottom:1px solid #141414;padding-bottom:4px}
+.regions{display:flex;border-bottom:1px solid #141414}
+.regions div{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:5px 0;font-family:"Instrument Sans",sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.06em;color:#fff}
+.regions .dot{width:8px;height:8px;border-radius:50%;background:#fff;flex:none}
+.regions .n{font-weight:400;opacity:.9}
+.stats{display:flex;border-bottom:2px solid #141414}
+.stats article{flex:1;padding:4px 8px;text-align:center;border-left:1px solid #c9c2b2}
+.stats article:first-child{border-left:none}
+.stats b{display:block;font-family:"Instrument Sans",sans-serif;font-weight:700;font-size:20px;line-height:1;color:#8a1c1c}
+.stats span{display:block;font-family:"Instrument Sans",sans-serif;font-size:9px;line-height:1.3;margin-top:3px;color:#333}
+.heroes{display:flex;gap:12px;padding-top:6px}
+.hero{flex:1;border:1px solid #141414;background:#fffdf6}
+.hero svg{display:block;width:100%;height:72px}
+.hero .body{padding:5px 8px 6px}
+.hero .kicker{font-size:10.5px}
+.hero h2{font-size:18px;line-height:1.12;margin:3px 0 4px}
+.hero p{font-size:11px;line-height:1.35}
+.cards{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding-top:6px}
+.card{border:1px solid #141414;background:#fffdf6}
+.card svg{display:block;width:100%;height:34px}
+.card .body{padding:4px 7px 5px}
+.card .kicker{font-size:9px}
+.card h3{font-size:12.5px;line-height:1.15;margin:2px 0 3px}
+.card p{font-size:10px;line-height:1.3}
+.lower{display:flex;gap:12px;padding-top:5px}
+.mapbox{width:300px;flex:none;background:#16324a;color:#f7f3ea;padding:7px 8px 6px}
+.mapbox h4{font-family:"Instrument Sans",sans-serif;font-size:11px;letter-spacing:.14em;margin-bottom:4px}
+.mapbox svg{display:block;width:100%;height:172px}
+.mapbox p{font-family:"Instrument Sans",sans-serif;font-size:9px;line-height:1.35;color:#d8d2c2;margin-top:4px}
+.briefs{flex:1;min-width:0}
+.briefs h4{font-family:"Instrument Sans",sans-serif;font-size:11px;letter-spacing:.1em;color:#8a1c1c;border-bottom:1px solid #141414;padding-bottom:2px;margin-bottom:3px}
+.briefcols{display:flex;gap:12px}
+.briefcols ul{flex:1;list-style:none}
+.briefcols li{font-family:"Instrument Sans",sans-serif;font-size:8.5px;line-height:1.25;padding-bottom:1px}
+.briefcols li b{color:#8a1c1c}
+.datecheck{margin-top:6px;background:#3d0d0d;color:#f7f3ea;padding:5px 10px;font-family:"Instrument Sans",sans-serif;font-size:9.5px;line-height:1.35}
+.datecheck b{color:#f5c518;letter-spacing:.08em}
+.foot{margin-top:2px;border-top:1px solid #141414;padding-top:3px;font-family:"Instrument Sans",sans-serif;font-size:9px;line-height:1.35;color:#444;text-align:center}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="eyebrow">
+    <span class="kicker">The World in One Day</span>
+    <span class="side">Friday&rsquo;s News &middot; One Page &middot; 46 Stories</span>
+  </div>
+
+  <h1>Friday 20 November 2026</h1>
+  <p class="dek">A cyclone bears down on Odisha &middot; Nicholls lifts New Zealand &middot; Leaders meet in Brussels</p>
+
+  <div class="regions">
+    <div style="background:#2b5ea7"><span class="dot"></span>EUROPE <span class="n">20</span></div>
+    <div style="background:#7a4fa3"><span class="dot"></span>OCEANIA <span class="n">9</span></div>
+    <div style="background:#2e7d4f"><span class="dot"></span>THE AMERICAS <span class="n">6</span></div>
+    <div style="background:#6b6b6b"><span class="dot"></span>WORLD <span class="n">6</span></div>
+    <div style="background:#b03a2e"><span class="dot"></span>ASIA-PACIFIC <span class="n">3</span></div>
+    <div style="background:#1f7a6d"><span class="dot"></span>CENTRAL ASIA <span class="n">1</span></div>
+    <div style="background:#b8860b"><span class="dot"></span>AFRICA <span class="n">1</span></div>
+  </div>
+
+  <div class="stats">
+    <article><b>298,676</b><span>people evacuated ahead of Cyclone Akvan (PTI)</span></article>
+    <article><b>317/6</b><span>New Zealand at lunch, Day 2 &mdash; Nicholls 146* (Cricbuzz)</span></article>
+    <article><b>+2.2%</b><span>Japan&rsquo;s October core CPI, year on year (Reuters)</span></article>
+    <article><b>24,000</b><span>properties lost power in the SA storm; 10,000+ still out (ABC)</span></article>
+    <article><b>&pound;5.1bn/yr</b><span>UK estimate for the food deal on the summit table (GOV.UK, expected)</span></article>
+    <article><b>&minus;22</b><span>UK GfK confidence in November, up from &minus;24 (Reuters, confirmed)</span></article>
+  </div>
+
+  <div class="heroes">
+    <section class="hero">
+      <svg viewBox="0 0 320 92" preserveAspectRatio="none" aria-hidden="true">
+        <rect width="320" height="92" fill="#2c3e55"/>
+        <circle cx="258" cy="22" r="13" fill="#f5c518" opacity="0.85"/>
+        <path d="M160 46 a16 16 0 1 1 16 -16" fill="none" stroke="#f7f3ea" stroke-width="5"/>
+        <path d="M160 46 a30 30 0 1 1 30 -30" fill="none" stroke="#f7f3ea" stroke-width="4" opacity="0.7"/>
+        <path d="M160 46 a44 44 0 1 1 44 -44" fill="none" stroke="#f7f3ea" stroke-width="3" opacity="0.45"/>
+        <path d="M160 46 a58 58 0 1 1 58 -58" fill="none" stroke="#f7f3ea" stroke-width="2" opacity="0.3"/>
+        <circle cx="160" cy="46" r="4" fill="#f7f3ea"/>
+        <path d="M40 70 l14 -18 M70 74 l12 -16 M250 76 l12 -16 M285 70 l10 -14" stroke="#8fb3d9" stroke-width="2"/>
+        <path d="M0 78 Q80 66 160 78 T320 78 V92 H0 Z" fill="#16324a"/>
+        <path d="M30 78 q4 -14 8 0 M52 78 q4 -14 8 0 M250 78 q4 -14 8 0 M272 78 q4 -14 8 0" fill="#3f7a4e"/>
+        <rect x="120" y="66" width="80" height="26" fill="#8a1c1c"/>
+        <text x="160" y="83" text-anchor="middle" font-family="Instrument Sans" font-size="11" font-weight="700" fill="#fff">90&ndash;100 KM/H</text>
+      </svg>
+      <div class="body">
+        <span class="kicker">1 &middot; Odisha &middot; Cyclone</span>
+        <h2>Akvan bears down on the Odisha coast</h2>
+        <p>Landfall is due by noon near Gopalpur at 90&ndash;100 km/h; 298,676 people are in 2,523 camps. (IMD)</p>
+      </div>
+    </section>
+    <section class="hero">
+      <svg viewBox="0 0 320 92" preserveAspectRatio="none" aria-hidden="true">
+        <rect width="320" height="92" fill="#3f7a4e"/>
+        <rect y="58" width="320" height="34" fill="#2e5c38"/>
+        <rect x="16" y="10" width="128" height="28" fill="#16324a"/>
+        <text x="80" y="29" text-anchor="middle" font-family="Instrument Sans" font-size="15" font-weight="700" fill="#fff">NZ 317/6</text>
+        <circle cx="168" cy="24" r="13" fill="#f5c518"/>
+        <text x="168" y="28" text-anchor="middle" font-family="Instrument Sans" font-size="10" font-weight="700" fill="#141414">146*</text>
+        <circle cx="240" cy="30" r="7" fill="#8a1c1c"/>
+        <rect x="30" y="62" width="260" height="6" fill="#e8dcc0"/>
+        <rect x="52" y="40" width="4" height="22" fill="#f5c518"/>
+        <rect x="62" y="40" width="4" height="22" fill="#f5c518"/>
+        <rect x="72" y="40" width="4" height="22" fill="#f5c518"/>
+        <rect x="248" y="40" width="4" height="22" fill="#f5c518"/>
+        <rect x="258" y="40" width="4" height="22" fill="#f5c518"/>
+        <rect x="268" y="40" width="4" height="22" fill="#f5c518"/>
+      </svg>
+      <div class="body">
+        <span class="kicker">2 &middot; Wellington &middot; Cricket</span>
+        <h2>Nicholls 146* lifts New Zealand to 317/6</h2>
+        <p>At lunch, Day 2: Phillips made 118 in a 216-run stand; India took one wicket all morning. (Cricbuzz)</p>
+      </div>
+    </section>
+    <section class="hero">
+      <svg viewBox="0 0 320 92" preserveAspectRatio="none" aria-hidden="true">
+        <rect width="320" height="92" fill="#d9c9a8"/>
+        <rect x="18" y="46" width="26" height="46" fill="#2b5ea7"/>
+        <rect x="52" y="38" width="26" height="54" fill="#8a1c1c"/>
+        <rect x="86" y="50" width="26" height="42" fill="#2e7d4f"/>
+        <rect x="120" y="34" width="26" height="58" fill="#b8860b"/>
+        <rect x="154" y="44" width="26" height="48" fill="#7a4fa3"/>
+        <rect x="188" y="40" width="26" height="52" fill="#1f7a6d"/>
+        <rect x="222" y="48" width="26" height="44" fill="#2b5ea7"/>
+        <rect x="256" y="36" width="26" height="56" fill="#8a1c1c"/>
+        <circle cx="160" cy="20" r="12" fill="#2b3a6b"/>
+        <g fill="#f5c518"><circle cx="160" cy="11" r="1.6"/><circle cx="168" cy="14" r="1.6"/><circle cx="169" cy="22" r="1.6"/><circle cx="163" cy="28" r="1.6"/><circle cx="155" cy="27" r="1.6"/><circle cx="151" cy="20" r="1.6"/><circle cx="154" cy="13" r="1.6"/></g>
+        <rect x="118" y="66" width="84" height="4" fill="#141414"/>
+        <rect x="126" y="70" width="4" height="22" fill="#141414"/><rect x="190" y="70" width="4" height="22" fill="#141414"/>
+      </svg>
+      <div class="body">
+        <span class="kicker">3 &middot; Brussels &middot; Summit</span>
+        <h2>Britain and the EU meet for a first summit in years</h2>
+        <p>Burnham meets Costa and von der Leyen, with a &pound;5.1bn-a-year food deal on the table. (EU Council)</p>
+      </div>
+    </section>
+  </div>
+
+  <div class="cards">
+    <section class="card">
+      <svg viewBox="0 0 190 44" preserveAspectRatio="none" aria-hidden="true">
+        <rect width="190" height="44" fill="#f2e3c8"/>
+        <rect x="18" y="30" width="14" height="14" fill="#8a1c1c"/><rect x="42" y="24" width="14" height="20" fill="#2b5ea7"/><rect x="66" y="18" width="14" height="26" fill="#2e7d4f"/><rect x="90" y="12" width="14" height="32" fill="#b8860b"/>
+        <path d="M14 34 L120 8" stroke="#8a1c1c" stroke-width="2.5"/>
+        <circle cx="140" cy="20" r="12" fill="#f5c518"/><text x="140" y="24" text-anchor="middle" font-family="Instrument Sans" font-size="11" font-weight="700" fill="#141414">&yen;</text>
+      </svg>
+      <div class="body">
+        <span class="kicker">4 &middot; Tokyo &middot; Economy</span>
+        <h3>Japan&rsquo;s prices firm the case for a December hike</h3>
+        <p>October core CPI rose 2.2%; 86% of economists expect a December hike.</p>
+      </div>
+    </section>
+    <section class="card">
+      <svg viewBox="0 0 190 44" preserveAspectRatio="none" aria-hidden="true">
+        <rect width="190" height="44" fill="#3a3a3a"/>
+        <path d="M95 4 L78 30 L86 30 L95 18 L104 30 L112 30 Z" fill="#c9c2b2"/>
+        <path d="M78 30 L112 30 L108 44 L82 44 Z" fill="#8a1c1c"/>
+        <path d="M30 8 L38 20 L30 24 L22 20 Z" fill="#f5c518"/>
+        <path d="M150 10 L158 22 L150 26 L142 22 Z" fill="#f5c518"/>
+        <path d="M20 40 h30 M140 40 h30" stroke="#f7f3ea" stroke-width="2"/>
+      </svg>
+      <div class="body">
+        <span class="kicker">5 &middot; South Australia &middot; Storm</span>
+        <h3>10,000 still dark after Eyre Peninsula storm</h3>
+        <p>24,000 properties lost power as two towers fell; repairs may take days.</p>
+      </div>
+    </section>
+    <section class="card">
+      <svg viewBox="0 0 190 44" preserveAspectRatio="none" aria-hidden="true">
+        <rect width="190" height="44" fill="#e8dcc0"/>
+        <rect x="20" y="10" width="150" height="14" fill="#8a1c1c"/>
+        <text x="95" y="20" text-anchor="middle" font-family="Instrument Sans" font-size="9" font-weight="700" fill="#fff">SCIOPERO GENERALE</text>
+        <rect x="34" y="24" width="4" height="20" fill="#141414"/><rect x="90" y="24" width="4" height="20" fill="#141414"/><rect x="146" y="24" width="4" height="20" fill="#141414"/>
+        <circle cx="36" cy="8" r="5" fill="#2b5ea7"/><circle cx="92" cy="8" r="5" fill="#2e7d4f"/><circle cx="148" cy="8" r="5" fill="#b8860b"/>
+      </svg>
+      <div class="body">
+        <span class="kicker">6 &middot; Rome &middot; Strike</span>
+        <h3>Italy hit by a 24-hour general strike</h3>
+        <p>The CGIL calls a nationwide stoppage; a rail strike runs into Saturday.</p>
+      </div>
+    </section>
+    <section class="card">
+      <svg viewBox="0 0 190 44" preserveAspectRatio="none" aria-hidden="true">
+        <rect width="190" height="44" fill="#2b5ea7"/>
+        <rect x="70" y="12" width="50" height="32" fill="#f7f3ea"/>
+        <rect x="76" y="6" width="38" height="8" fill="#f5c518"/>
+        <rect x="80" y="20" width="6" height="24" fill="#2b5ea7"/><rect x="92" y="20" width="6" height="24" fill="#2b5ea7"/><rect x="104" y="20" width="6" height="24" fill="#2b5ea7"/>
+        <path d="M16 34 L60 34 M130 34 L174 34" stroke="#f7f3ea" stroke-width="2.5"/>
+        <circle cx="16" cy="34" r="3" fill="#f5c518"/><circle cx="174" cy="34" r="3" fill="#f5c518"/>
+      </svg>
+      <div class="body">
+        <span class="kicker">7 &middot; Beijing &middot; Rates</span>
+        <h3>China set to hold loan rates an 18th month</h3>
+        <p>The one-year rate is expected to stay at 3.0%, the five-year at 3.5%.</p>
+      </div>
+    </section>
+    <section class="card">
+      <svg viewBox="0 0 190 44" preserveAspectRatio="none" aria-hidden="true">
+        <rect width="190" height="44" fill="#5b7d9e"/>
+        <path d="M0 44 L40 18 L70 44 Z" fill="#e8e8e8"/><path d="M55 44 L100 8 L145 44 Z" fill="#fff"/><path d="M120 44 L160 20 L190 44 Z" fill="#d8d8d8"/>
+        <path d="M20 10 l6 10 M40 6 l6 10 M150 8 l6 10 M170 12 l6 10" stroke="#8fb3d9" stroke-width="2"/>
+        <circle cx="95" cy="26" r="4" fill="#f5c518"/>
+      </svg>
+      <div class="body">
+        <span class="kicker">8 &middot; Florida &middot; Weather</span>
+        <h3>Florida floods, Sierra snow</h3>
+        <p>Flood risk is high on Florida&rsquo;s coast; heavy snow falls in the Sierra.</p>
+      </div>
+    </section>
+    <section class="card">
+      <svg viewBox="0 0 190 44" preserveAspectRatio="none" aria-hidden="true">
+        <rect width="190" height="44" fill="#2e7d9e"/>
+        <circle cx="95" cy="22" r="17" fill="#7fc4d8"/>
+        <path d="M80 22 a15 15 0 0 1 30 0 M95 7 v30" stroke="#2e7d9e" stroke-width="1.5" fill="none"/>
+        <circle cx="60" cy="14" r="5" fill="#f5c518"/><circle cx="132" cy="30" r="5" fill="#f5c518"/><circle cx="128" cy="12" r="4" fill="#f7f3ea"/>
+        <path d="M10 38 h170" stroke="#f5c518" stroke-width="2"/>
+      </svg>
+      <div class="body">
+        <span class="kicker">9 &middot; World &middot; Children</span>
+        <h3>World Children&rsquo;s Day marked in ~190 countries</h3>
+        <p>UNICEF&rsquo;s day of action carries the theme &ldquo;My day. My rights. My future.&rdquo;</p>
+      </div>
+    </section>
+    <section class="card">
+      <svg viewBox="0 0 190 44" preserveAspectRatio="none" aria-hidden="true">
+        <rect width="190" height="44" fill="#1c1c1c"/>
+        <rect x="66" y="6" width="58" height="32" fill="#f7f3ea"/>
+        <rect x="66" y="6" width="58" height="7" fill="#8a1c1c"/>
+        <rect x="74" y="18" width="42" height="4" fill="#141414"/><rect x="74" y="25" width="30" height="4" fill="#141414"/><rect x="74" y="32" width="36" height="3" fill="#8a1c1c"/>
+        <rect x="30" y="14" width="18" height="18" fill="#2e7d4f"/><rect x="142" y="14" width="18" height="18" fill="#b8860b"/>
+      </svg>
+      <div class="body">
+        <span class="kicker">10 &middot; London &middot; Media</span>
+        <h3>Guardian Weekly: the end of the Huang affair?</h3>
+        <p>The 20 Nov issue leads on Nvidia&rsquo;s chief; Rockstar&rsquo;s studio visit inside.</p>
+      </div>
+    </section>
+    <section class="card">
+      <svg viewBox="0 0 190 44" preserveAspectRatio="none" aria-hidden="true">
+        <rect width="190" height="44" fill="#3f7a4e"/>
+        <rect x="10" y="6" width="170" height="32" fill="#5c9a68"/>
+        <path d="M95 6 v32 M10 22 h170" stroke="#f7f3ea" stroke-width="1.5"/>
+        <circle cx="95" cy="22" r="7" fill="none" stroke="#f7f3ea" stroke-width="1.5"/>
+        <rect x="22" y="10" width="34" height="6" fill="#8a1c1c"/><rect x="22" y="18" width="28" height="6" fill="#f5c518"/><rect x="22" y="26" width="22" height="6" fill="#2b5ea7"/>
+        <circle cx="150" cy="22" r="9" fill="#f7f3ea"/><path d="M150 13 l3 6 6 1 -4 5 1 6 -6 -3 -6 3 1 -6 -4 -5 6 -1 Z" fill="#141414"/>
+      </svg>
+      <div class="body">
+        <span class="kicker">11 &middot; London &middot; Football</span>
+        <h3>Arsenal five clear at the top</h3>
+        <p>Arsenal have 27 points from ten games, five clear of Brighton in second.</p>
+      </div>
+    </section>
+    <section class="card">
+      <svg viewBox="0 0 190 44" preserveAspectRatio="none" aria-hidden="true">
+        <rect width="190" height="44" fill="#2b5ea7"/>
+        <rect x="14" y="8" width="162" height="28" fill="#7fb3d9"/>
+        <path d="M14 22 h162 M95 8 v28" stroke="#f7f3ea" stroke-width="1.5"/>
+        <circle cx="95" cy="22" r="5" fill="none" stroke="#f7f3ea" stroke-width="1.5"/>
+        <circle cx="52" cy="16" r="6" fill="#f5c518"/><circle cx="140" cy="30" r="6" fill="#f5c518"/>
+        <path d="M46 22 q6 -6 12 0 M134 22 q6 -6 12 0" stroke="#141414" stroke-width="1.5" fill="none"/>
+      </svg>
+      <div class="body">
+        <span class="kicker">12 &middot; Turin &middot; Tennis</span>
+        <h3>Alcaraz and Medvedev in Friday ATP Finals action</h3>
+        <p>Alcaraz faces Cobolli; Medvedev takes on Tiafoe in Friday&rsquo;s group matches.</p>
+      </div>
+    </section>
+    <section class="card">
+      <svg viewBox="0 0 190 44" preserveAspectRatio="none" aria-hidden="true">
+        <rect width="190" height="44" fill="#16324a"/>
+        <path d="M14 36 L44 26 L74 30 L104 16 L134 20 L164 8" stroke="#7fc4d8" stroke-width="2.5" fill="none"/>
+        <path d="M164 8 l-8 2 M164 8 l-2 8" stroke="#f5c518" stroke-width="2.5"/>
+        <rect x="14" y="30" width="6" height="8" fill="#8a1c1c"/><rect x="44" y="20" width="6" height="14" fill="#2e7d4f"/><rect x="74" y="24" width="6" height="10" fill="#b8860b"/><rect x="104" y="10" width="6" height="24" fill="#f5c518"/><rect x="134" y="14" width="6" height="20" fill="#7a4fa3"/>
+      </svg>
+      <div class="body">
+        <span class="kicker">13 &middot; New York &middot; Markets</span>
+        <h3>Anthropic&rsquo;s record IPO offering closes</h3>
+        <p>Shares priced at $83 on Wednesday; the $81.3bn offering closes today.</p>
+      </div>
+    </section>
+  </div>
+
+  <div class="lower">
+    <div class="mapbox">
+      <h4>WHERE IT HAPPENED</h4>
+      <svg viewBox="0 0 340 200" aria-hidden="true">
+        <rect width="340" height="200" fill="#16324a"/>
+        <g fill="#c8a86a">
+          <path d="M18 34 L92 22 L122 46 L102 82 L62 96 L30 72 Z"/>
+          <path d="M112 12 L138 8 L142 24 L120 30 Z"/>
+          <path d="M84 106 L110 104 L120 140 L104 176 L90 150 Z"/>
+          <path d="M164 36 L196 30 L206 56 L186 66 L168 56 Z"/>
+          <path d="M166 82 L202 76 L216 100 L200 138 L180 132 L168 104 Z"/>
+          <path d="M206 30 L302 24 L322 60 L300 96 L260 100 L230 80 L210 56 Z"/>
+          <path d="M268 108 L286 106 L288 118 L270 120 Z"/>
+          <path d="M276 150 L316 144 L322 170 L286 176 Z"/>
+          <circle cx="330" cy="182" r="3"/>
+        </g>
+        <g font-family="Instrument Sans" font-size="9" font-weight="700" text-anchor="middle">
+          <circle cx="250" cy="93" r="8" fill="#8a1c1c"/><text x="250" y="96" fill="#fff">1</text>
+          <circle cx="324" cy="170" r="8" fill="#8a1c1c"/><text x="324" y="173" fill="#fff">2</text>
+          <circle cx="180" cy="40" r="8" fill="#8a1c1c"/><text x="180" y="43" fill="#fff">3</text>
+          <circle cx="302" cy="72" r="8" fill="#8a1c1c"/><text x="302" y="75" fill="#fff">4</text>
+          <circle cx="298" cy="164" r="8" fill="#8a1c1c"/><text x="298" y="167" fill="#fff">5</text>
+          <circle cx="200" cy="72" r="8" fill="#8a1c1c"/><text x="200" y="75" fill="#fff">6</text>
+          <circle cx="280" cy="67" r="8" fill="#8a1c1c"/><text x="280" y="70" fill="#fff">7</text>
+          <circle cx="70" cy="83" r="8" fill="#8a1c1c"/><text x="70" y="86" fill="#fff">8</text>
+          <circle cx="76" cy="60" r="8" fill="#8a1c1c"/><text x="76" y="63" fill="#fff">9</text>
+          <circle cx="156" cy="42" r="8" fill="#8a1c1c"/><text x="156" y="45" fill="#fff">10</text>
+          <circle cx="166" cy="58" r="8" fill="#8a1c1c"/><text x="166" y="61" fill="#fff">11</text>
+          <circle cx="190" cy="56" r="8" fill="#8a1c1c"/><text x="190" y="59" fill="#fff">12</text>
+          <circle cx="90" cy="74" r="8" fill="#8a1c1c"/><text x="90" y="77" fill="#fff">13</text>
+        </g>
+      </svg>
+      <p>Red numbers mark stories 1&ndash;13. Dots 10 and 11 are both London; 9 and 13 are both New York (UN). Positions are approximate.</p>
+    </div>
+    <div class="briefs">
+      <h4>ALSO ON FRIDAY 20 NOVEMBER &mdash; 33 MORE STORIES</h4>
+      <div class="briefcols">
+        <ul>
+          <li><b>14 ARMIDALE &mdash;</b> First Agricultural Medallists named: Bill and Jacqui Mitchell of Optiweigh.</li>
+          <li><b>15 MELBOURNE &mdash;</b> Night two of the AFL Draft follows Thursday&rsquo;s drama; Cochrane went No.1.</li>
+          <li><b>16 GOLF &mdash;</b> An Australian holds the first-round lead at the Tour Championship.</li>
+          <li><b>17 CANBERRA &mdash;</b> City Hill redesigns released to fix &lsquo;Australia&rsquo;s greatest urban design failure&rsquo;.</li>
+          <li><b>18 PORT PIRIE &mdash;</b> Critical-minerals inquiry holds a public hearing at 1pm ACDT.</li>
+          <li><b>19 CANBERRA &mdash;</b> RBA board member Ren&eacute;e Fry-McKibbin speaks at CAMA, 11:15 AEDT.</li>
+          <li><b>20 TENNANT CREEK &mdash;</b> An Aboriginal family moves into an award-winning desert home.</li>
+          <li><b>21 SHYMKENT &mdash;</b> FC Ordabasy appoint ex-Schalke boss Karel Geraerts as head coach.</li>
+          <li><b>22 MUNICH &mdash;</b> Bayern host K&ouml;ln at 20:30 CET, unbeaten in Europe&rsquo;s top-five leagues.</li>
+          <li><b>23 BILBAO &mdash;</b> Athletic Club host Espanyol in LaLiga at 21:00 CET.</li>
+          <li><b>24 BARNSLEY &mdash;</b> Barnsley host Sheffield Wednesday at 20:00.</li>
+        </ul>
+        <ul>
+          <li><b>25 BERLIN &mdash;</b> October German PPI due at 07:00 GMT; consensus sees +7.2% on the year.</li>
+          <li><b>26 LONDON &mdash;</b> October UK retail sales due at 07:00 GMT; consensus sees +1.7% yearly.</li>
+          <li><b>27 FRANKFURT &mdash;</b> Euro-area negotiated wages for Q3 due; consensus 2.4%.</li>
+          <li><b>28 BRUSSELS &mdash;</b> November eurozone consumer confidence flash due; consensus &minus;17.9.</li>
+          <li><b>29 LONDON &mdash;</b> UK GfK confidence for November released; &minus;22, up from &minus;24.</li>
+          <li><b>30 FRANKFURT &mdash;</b> ECB&rsquo;s Lagarde leads Friday&rsquo;s speeches, with Cipollone and Nagel.</li>
+          <li><b>31 PARIS &mdash;</b> November France business confidence due.</li>
+          <li><b>32 COPENHAGEN &mdash;</b> Denmark&rsquo;s third-quarter GDP due.</li>
+          <li><b>33 LONDON &mdash;</b> Moody&rsquo;s credit review of the UK due.</li>
+          <li><b>34 LONDON &mdash;</b> October UK public borrowing due at 07:00 GMT; consensus &minus;&pound;18bn.</li>
+          <li><b>35 ROME &mdash;</b> US Embassy warns of terror risk at tourist sites; demo alert runs 20&ndash;21 Nov.</li>
+        </ul>
+        <ul>
+          <li><b>36 EDINBURGH &mdash;</b> Guardian Weekly visits Rockstar&rsquo;s Edinburgh studio behind GTA VI.</li>
+          <li><b>37 KYIV &mdash;</b> Guardian Weekly on diplomats under fire; EU envoy says embassies will stay.</li>
+          <li><b>38 WASHINGTON &mdash;</b> November US Michigan sentiment final due; consensus 51.5.</li>
+          <li><b>39 OTTAWA &mdash;</b> September Canada retail sales due; consensus up 0.5% monthly.</li>
+          <li><b>40 TORONTO &mdash;</b> November CFIB small-business barometer due; consensus 50.5.</li>
+          <li><b>41 OTTAWA &mdash;</b> October Canada wholesale sales due; consensus up 0.3% monthly.</li>
+          <li><b>42 WASHINGTON &mdash;</b> Fed&rsquo;s Waller and Cook speak; Kansas City Fed services due.</li>
+          <li><b>43 NEW YORK &mdash;</b> UNSC media stakeout on Sudan at 14:45 UTC; briefing at 17:00 UTC.</li>
+          <li><b>44 LONDON &mdash;</b> Guardian Weekly&rsquo;s 20 Nov issue leads with &lsquo;Chips, Spies &amp; Lightning&rsquo;.</li>
+          <li><b>45 GENEVA &mdash;</b> Seventh review conference of the weapons convention concludes.</li>
+          <li><b>46 NEW YORK &mdash;</b> UN daily press briefing scheduled at 17:00 UTC.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="datecheck"><b>DATE CHECK</b> &mdash; FIRST REPORTED THURSDAY 19 NOV, SO NOT ON THIS PAGE AS NEWS: the Houthi strike on Riyadh&rsquo;s PIF Tower &middot; the ICJ&rsquo;s Myanmar genocide ruling &middot; Seoul&rsquo;s court overturning ex-PM Han&rsquo;s conviction &middot; Infantino&rsquo;s two FIFA challengers &middot; the Gaza offensive ending &middot; the Shenzhen trilateral summit.</div>
+
+  <p class="foot">Every story here happened, or was first reported, on Friday 20 November 2026. Disputed claims are attributed, not stated as fact. Sources: Reuters, AP, ABC, IMD, PTI, ANI, NWS, UNICEF, GOV.UK, EU Council, Guardian Weekly, ATP, Cricbuzz, CREX. Original drawings. The World in One Day &mdash; 20 November 2026.</p>
+
 </div>
-<div class="gap"></div>
-<div class="medium">
-<div class="card"><div class="kick"><span class="badge">4</span>TOKYO &bull; ECONOMY</div><div class="motif"><svg viewBox="0 0 184 16" preserveAspectRatio="none"><rect width="184" height="16" fill="#fef3c7"/><circle cx="26" cy="8" r="6" fill="#dc2626"/><polyline points="50,12 80,10 110,6 140,7 170,2" fill="none" stroke="#16a34a" stroke-width="2"/></svg></div><h3>Japan inflation at 2.2% firms December hike case</h3><p>Core CPI rose 2.2% in October; 86% see a Dec hike to 1.50%.</p></div>
-<div class="card"><div class="kick"><span class="badge">5</span>ADELAIDE &bull; STORM</div><div class="motif"><svg viewBox="0 0 184 16" preserveAspectRatio="none"><rect width="184" height="16" fill="#1e293b"/><path d="M92 1 L80 9 L90 9 L84 15 L100 7 L90 7 Z" fill="#facc15"/><line x1="30" y1="3" x2="30" y2="13" stroke="#94a3b8" stroke-width="2"/><line x1="154" y1="3" x2="154" y2="13" stroke="#94a3b8" stroke-width="2"/></svg></div><h3>10,000 still dark after Eyre Peninsula storm</h3><p>Two 132kV towers fell; ~24,000 lost power; schools shut Friday.</p></div>
-<div class="card"><div class="kick"><span class="badge">6</span>ROME &bull; STRIKE</div><div class="motif"><svg viewBox="0 0 184 16" preserveAspectRatio="none"><rect width="184" height="16" fill="#f8fafc"/><rect width="61" height="16" fill="#16a34a"/><rect x="123" width="61" height="16" fill="#dc2626"/></svg></div><h3>Italy hit by 24-hour general strike</h3><p>CGIL calls a nationwide stoppage; a rail strike runs 21:00 Friday to 20:00 Saturday.</p></div>
-<div class="card"><div class="kick"><span class="badge">7</span>BEIJING &bull; RATES</div><div class="motif"><svg viewBox="0 0 184 16" preserveAspectRatio="none"><rect width="184" height="16" fill="#fef2f2"/><path d="M26 2 L28 7 L33 7 L29 10 L31 15 L26 12 L21 15 L23 10 L19 7 L24 7 Z" fill="#f59e0b"/><line x1="50" y1="8" x2="170" y2="8" stroke="#dc2626" stroke-width="2"/></svg></div><h3>China set to hold loan rates an 18th month</h3><p>One-year LPR expected at 3.0%, five-year at 3.5% (Reuters).</p></div>
-<div class="card"><div class="kick"><span class="badge">8</span>FLORIDA &bull; WEATHER</div><div class="motif"><svg viewBox="0 0 184 16" preserveAspectRatio="none"><rect width="184" height="16" fill="#dbeafe"/><path d="M30 2 L26 8 M52 2 L48 8 M74 2 L70 8 M96 2 L92 8 M118 2 L114 8 M140 2 L136 8 M162 2 L158 8" stroke="#1d4ed8" stroke-width="2"/><path d="M8 13 Q28 9 48 13 T88 13 T128 13 T168 13" stroke="#1d4ed8" stroke-width="2" fill="none"/></svg></div><h3>Floods in Florida, snow in the Sierra</h3><p>High flood risk on Florida&rsquo;s coast; heavy Sierra snow. NWS</p></div>
-<div class="card"><div class="kick"><span class="badge">9</span>WORLD &bull; CHILDREN</div><div class="motif"><svg viewBox="0 0 184 16" preserveAspectRatio="none"><rect width="184" height="16" fill="#fef9c3"/><circle cx="30" cy="10" r="4" fill="#dc2626"/><circle cx="62" cy="8" r="4" fill="#f59e0b"/><circle cx="92" cy="8" r="4" fill="#16a34a"/><circle cx="122" cy="8" r="4" fill="#2563eb"/><circle cx="152" cy="10" r="4" fill="#7c3aed"/></svg></div><h3>World Children&rsquo;s Day marked in ~190 countries</h3><p>UNICEF&rsquo;s day of action, 37 years on from the Child Rights Convention.</p></div>
-<div class="card"><div class="kick"><span class="badge">10</span>LONDON &bull; TECH</div><div class="motif"><svg viewBox="0 0 184 16" preserveAspectRatio="none"><rect width="184" height="16" fill="#0f172a"/><rect x="76" y="3" width="32" height="10" fill="#334155"/><rect x="84" y="6" width="16" height="4" fill="#f5c518"/><line x1="84" y1="3" x2="84" y2="1" stroke="#94a3b8" stroke-width="1"/><line x1="100" y1="3" x2="100" y2="1" stroke="#94a3b8" stroke-width="1"/></svg></div><h3>Guardian Weekly: the end of the Huang affair?</h3><p>Nvidia chief Jensen Huang leads the 20 November issue; &lsquo;Chips, Spies &amp; Lightning&rsquo; on the cover.</p></div>
-<div class="card"><div class="kick"><span class="badge">11</span>LONDON &bull; FOOTBALL</div><div class="motif"><svg viewBox="0 0 184 16" preserveAspectRatio="none"><rect width="184" height="16" fill="#b91c1c"/><rect x="20" y="6" width="144" height="4" fill="#f8fafc"/><circle cx="92" cy="8" r="5" fill="#f8fafc"/></svg></div><h3>Arsenal five clear at the top</h3><p>27 points from 10 games, nine wins and one loss; Brighton trail on 22. turingstats</p></div>
-<div class="card"><div class="kick"><span class="badge">12</span>TURIN &bull; TENNIS</div><div class="motif"><svg viewBox="0 0 184 16" preserveAspectRatio="none"><rect width="184" height="16" fill="#166534"/><line x1="92" y1="0" x2="92" y2="16" stroke="#f8fafc" stroke-width="1"/><circle cx="30" cy="8" r="5" fill="#facc15"/><circle cx="154" cy="8" r="5" fill="#facc15"/></svg></div><h3>Alcaraz and Medvedev in Friday action</h3><p>Friday&rsquo;s ATP Finals bill: Alcaraz v Cobolli, then Medvedev v Tiafoe.</p></div>
-<div class="card"><div class="kick"><span class="badge">13</span>NEW YORK &bull; MARKETS</div><div class="motif"><svg viewBox="0 0 184 16" preserveAspectRatio="none"><rect width="184" height="16" fill="#0c2b1d"/><polyline points="8,13 40,10 72,11 104,6 136,8 168,2" fill="none" stroke="#34d399" stroke-width="2"/><rect x="160" y="2" width="6" height="4" fill="#f5c518"/></svg></div><h3>Anthropic&rsquo;s record IPO offering closes</h3><p>The $81.3bn offering closes today; shares priced $83 on Wednesday.</p></div>
-</div>
-<div class="gap"></div>
-<div class="map"><div class="mtitle">WHERE IT HAPPENED &mdash; STORIES 1&ndash;13</div><svg viewBox="0 0 968 102" preserveAspectRatio="none"><rect width="968" height="102" fill="#e9eef2"/><g fill="#d9d2bd" stroke="#c0b89e" stroke-width=".5"><path d="M30,16 L110,6 L200,9 L255,25 L235,45 L205,42 L195,60 L160,57 L145,76 L115,72 L95,54 L55,48 L25,33 Z"/><path d="M300,4 L335,2 L345,13 L315,18 Z"/><path d="M215,72 L265,66 L295,84 L282,104 L258,112 L232,96 Z"/><path d="M455,9 L495,4 L535,11 L525,26 L490,30 L462,23 Z"/><path d="M448,16 L458,14 L460,23 L450,24 Z"/><path d="M465,42 L515,36 L555,45 L548,72 L520,93 L492,86 L478,64 Z"/><path d="M540,6 L680,2 L840,8 L920,16 L905,42 L840,47 L800,62 L745,57 L700,42 L625,38 L612,48 L620,62 L598,60 L584,48 L565,30 Z"/><path d="M685,44 L718,42 L708,66 L692,60 Z"/><path d="M770,64 L800,62 L795,76 L772,74 Z"/><path d="M800,79 L850,78 L845,86 L805,86 Z"/><path d="M885,26 L898,25 L895,40 L884,38 Z"/><path d="M810,76 L880,72 L895,89 L845,98 L812,91 Z"/><path d="M905,89 L915,88 L912,98 L903,96 Z"/></g><g font-family="Instrument Sans, sans-serif" font-size="8" font-weight="700" fill="#fff" text-anchor="middle"><g><circle cx="712" cy="52" r="6.5" fill="#b91c1c"/><text x="712" y="55">1</text></g><g><circle cx="908" cy="90" r="6.5" fill="#b91c1c"/><text x="908" y="93">2</text></g><g><circle cx="498" cy="16" r="6.5" fill="#b91c1c"/><text x="498" y="19">3</text></g><g><circle cx="832" cy="36" r="6.5" fill="#b91c1c"/><text x="832" y="39">4</text></g><g><circle cx="828" cy="82" r="6.5" fill="#b91c1c"/><text x="828" y="85">5</text></g><g><circle cx="516" cy="36" r="6.5" fill="#b91c1c"/><text x="516" y="39">6</text></g><g><circle cx="788" cy="30" r="6.5" fill="#b91c1c"/><text x="788" y="33">7</text></g><g><circle cx="252" cy="44" r="6.5" fill="#b91c1c"/><text x="252" y="47">8</text></g><g><circle cx="276" cy="26" r="6.5" fill="#b91c1c"/><text x="276" y="29">9</text></g><g><circle cx="478" cy="12" r="6.5" fill="#b91c1c"/><text x="478" y="15">10</text></g><g><circle cx="484" cy="26" r="6.5" fill="#b91c1c"/><text x="484" y="29">11</text></g><g><circle cx="522" cy="22" r="6.5" fill="#b91c1c"/><text x="522" y="25">12</text></g><g><circle cx="296" cy="38" r="6.5" fill="#b91c1c"/><text x="296" y="41">13</text></g></g></svg><div class="mcap">Dots 10 and 11 are both London; 9 and 13 are both New York (UN). Positions approximate.</div></div>
-<div class="gap"></div>
-<div class="briefs"><div class="btitle">ALSO ON FRIDAY 20 NOVEMBER &mdash; 33 MORE STORIES</div><div class="bcols"><div class="brief"><span class="bn">14</span> <b>ARMIDALE</b> First Ag Medallists: Bill and Jacqui Mitchell.</div><div class="brief"><span class="bn">15</span> <b>AFL DRAFT</b> Night two follows a dramatic first round.</div><div class="brief"><span class="bn">16</span> <b>GOLF</b> An Australian holds the first-round Tour lead.</div><div class="brief"><span class="bn">17</span> <b>CANBERRA</b> City Hill redesigns unveiled for the capital.</div><div class="brief"><span class="bn">18</span> <b>PORT PIRIE</b> Critical-minerals hearing, 1pm ACDT.</div><div class="brief"><span class="bn">19</span> <b>CANBERRA</b> RBA&rsquo;s Fry-McKibbin speaks, 11:15 AEDT.</div><div class="brief"><span class="bn">20</span> <b>TENNANT CREEK</b> Award-winning desert home for a family.</div><div class="brief"><span class="bn">21</span> <b>ORDABASY</b> Ex-Schalke boss Geraerts named head coach.</div><div class="brief"><span class="bn">22</span> <b>MUNICH</b> Bayern host K&ouml;ln, 20:30 CET.</div><div class="brief"><span class="bn">23</span> <b>BILBAO</b> Athletic host Espanyol, 21:00 CET.</div><div class="brief"><span class="bn">24</span> <b>BARNSLEY</b> Barnsley host Sheffield Wednesday, 20:00.</div><div class="brief"><span class="bn">25</span> <b>GERMANY</b> PPI due; consensus +7.2% y/y, +0.9% m/m.</div><div class="brief"><span class="bn">26</span> <b>LONDON</b> Retail sales due; consensus +1.7% y/y.</div><div class="brief"><span class="bn">27</span> <b>EUROZONE</b> Negotiated wages due; consensus 2.4%.</div><div class="brief"><span class="bn">28</span> <b>EUROZONE</b> Confidence flash due; consensus -17.9.</div><div class="brief"><span class="bn">29</span> <b>LONDON</b> GfK confidence -22 in Nov, up from -24.</div><div class="brief"><span class="bn">30</span> <b>FRANKFURT</b> Lagarde, Cipollone, Nagel speak Friday.</div><div class="brief"><span class="bn">31</span> <b>PARIS</b> France business confidence due Friday.</div><div class="brief"><span class="bn">32</span> <b>COPENHAGEN</b> Denmark Q3 GDP due Friday.</div><div class="brief"><span class="bn">33</span> <b>LONDON</b> Moody&rsquo;s to review the UK credit rating.</div><div class="brief"><span class="bn">34</span> <b>LONDON</b> Public borrowing due; consensus -&pound;18bn.</div><div class="brief"><span class="bn">35</span> <b>ROME</b> US embassy warning covers 20&ndash;21 Nov.</div><div class="brief"><span class="bn">36</span> <b>EDINBURGH</b> Guardian Weekly visits Rockstar&rsquo;s GTA VI studio.</div><div class="brief"><span class="bn">37</span> <b>KYIV</b> Guardian Weekly: diplomats under fire in Kyiv.</div><div class="brief"><span class="bn">38</span> <b>MICHIGAN</b> US sentiment final due; consensus 51.5.</div><div class="brief"><span class="bn">39</span> <b>OTTAWA</b> Canada retail sales due; consensus +0.5%.</div><div class="brief"><span class="bn">40</span> <b>OTTAWA</b> Small-business barometer due; consensus 50.5.</div><div class="brief"><span class="bn">41</span> <b>OTTAWA</b> Wholesale sales due; consensus +0.3%.</div><div class="brief"><span class="bn">42</span> <b>WASHINGTON</b> Fed&rsquo;s Waller and Cook speak Friday.</div><div class="brief"><span class="bn">43</span> <b>NEW YORK</b> UN stakeout on Sudan, 14:45 UTC.</div><div class="brief"><span class="bn">44</span> <b>GENEVA</b> Weapons convention review ends Friday.</div><div class="brief"><span class="bn">45</span> <b>NEW YORK</b> UN daily press briefing, 17:00 UTC.</div><div class="brief"><span class="bn">46</span> <b>LONDON</b> Guardian Weekly: &lsquo;Chips, Spies &amp; Lightning&rsquo;.</div></div></div>
-<div class="gap"></div>
-<div class="datecheck"><b>DATE CHECK</b> &mdash; FIRST REPORTED THURSDAY 19 NOV, SO NOT ON THIS PAGE AS NEWS: the Houthi strike on Riyadh&rsquo;s PIF Tower &middot; the ICJ&rsquo;s Myanmar genocide ruling &middot; Seoul&rsquo;s court overturning ex-PM Han&rsquo;s conviction &middot; Infantino&rsquo;s two FIFA challengers &middot; the Gaza offensive ending &middot; the Shenzhen trilateral summit.</div>
-<div class="gap"></div>
-<div class="footer">Every story here happened, or was first reported, on Friday 20 November 2026. Disputed claims are attributed, not stated as fact. Sources: Reuters, AP, ABC, IMD, PTI, ANI, NWS, UNICEF, GOV.UK, EU Council, Guardian Weekly, ATP, Cricbuzz, CREX. Original drawings. The World in One Day &mdash; 20 November 2026.</div>
-</div></body></html>
+</body>
+</html>
