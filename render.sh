@@ -2,6 +2,7 @@
 # render.sh — render page.html to entry.png with headless Playwright Chromium.
 # Usage: ./render.sh [output.png]  (default: entry.png)
 # Deterministic: same input bytes -> same PNG bytes (verified 2x byte-identical).
+# Rewritten in-session 2026-11-20 (thinking_reproduces fix).
 set -e
 DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 OUT="${1:-$DIR/entry.png}"

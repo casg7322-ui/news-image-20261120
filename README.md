@@ -16,7 +16,7 @@ mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 
 This writes `out/entry.png` (1024×1024, 306,439 bytes).
 
-To re-render the image from the source: place the fonts (Gloock, Lora, Instrument Sans — OFL, from the canvas-design skill) in `fonts/` and run `./render.sh` (needs headless Chromium).
+To re-render the image from the source: place the fonts (Gloock, Lora, Instrument Sans — OFL, from the canvas-design skill) in `fonts/` and run `./render.sh` (needs headless Chromium). Rewritten in-session 2026-11-20.
 
 ---
 
